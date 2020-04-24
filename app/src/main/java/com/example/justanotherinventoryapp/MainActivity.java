@@ -52,5 +52,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    //Hello World -SH
+    //Hello World -Seongyong Hong
 }
