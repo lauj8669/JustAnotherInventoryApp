@@ -16,7 +16,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    private FloatingActionButton add;
+    public FloatingActionButton add;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,18 +35,14 @@ public class MainActivity extends AppCompatActivity {
         });
         */
 
-        add = (FloatingActionButton) findViewById(R.id.fab);
+        add = findViewById(R.id.fab);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivity();
+                startActivity(new Intent(v.getContext(), addNewItem.class));
+                finish();
             }
         });
-    }
-
-    public void openActivity() {
-        Intent intent = new Intent(this, addNewItem.class);
-        startActivity(intent);
     }
 
     @Override
