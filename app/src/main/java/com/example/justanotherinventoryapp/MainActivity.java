@@ -1,5 +1,7 @@
 package com.example.justanotherinventoryapp;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -11,9 +13,10 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-
+    private Button add;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +32,18 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        add = (Button) findViewById(R.id.fab);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity();
+            }
+        });
+    }
+
+    public void openActivity() {
+        Intent intent = new Intent(this, addNewItem.class);
+        startActivity(intent);
     }
 
     @Override
@@ -52,6 +67,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    //Hello World -Seongyong Hong
-    // Hello World - Jeremy Lau
 }

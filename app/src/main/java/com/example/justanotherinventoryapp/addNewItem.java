@@ -13,15 +13,12 @@ public class addNewItem extends AppCompatActivity {
     EditText nameInput;
     EditText quantityInput;
     Button submitButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_item);
-
         nameInput = (EditText) findViewById(R.id.itemName);
         quantityInput = (EditText) findViewById(R.id.itemQuantity);
-
         submitButton = (Button) findViewById(R.id.submitInfo);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
