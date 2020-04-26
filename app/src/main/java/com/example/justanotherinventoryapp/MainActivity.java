@@ -40,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         recyclerView = findViewById(R.id.recyclerView);
+        /*
+        s1 = Item.getNames();
+        s2 = Item.getQuantities();
+         */
         myAdaptor adaptor = new myAdaptor(this, s1, s2);
     }
 
