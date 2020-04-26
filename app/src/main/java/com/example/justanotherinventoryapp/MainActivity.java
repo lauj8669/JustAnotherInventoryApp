@@ -16,11 +16,13 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton add;
     private RecyclerView recyclerView;
+    private TextView welcomeMessage;
     String[] s1;
     int[] s2;
 
@@ -30,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        welcomeMessage = findViewById(R.id.welcomeMessage);
+        welcomeMessage.setVisibility(View.VISIBLE);
         add = findViewById(R.id.fab);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
