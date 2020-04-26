@@ -1,24 +1,39 @@
 package com.example.justanotherinventoryapp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Stores information about each item
  */
 public class Item {
-    private String itemName;
-    private int quantity;
-    private String categoryName;
-    public Item(String setItemName, String setCategoryName, int setQuantity) {
-        itemName = setItemName;
-        categoryName = setCategoryName;
-        quantity = setQuantity;
+    static class EachItem {
+        public EachItem(String setItemName, int setItemQuantity) {
+            itemName = setItemName;
+            itemQuantity = setItemQuantity;
+        }
+        public String itemName;
+        public int itemQuantity;
     }
-    public void setCategoryName(String setCategoryName) {
-        categoryName = setCategoryName;
+    private static List<EachItem> listOfItems = new ArrayList<>();
+
+    public static void addNewItem(String itemName, int itemQuantity) {
+        listOfItems.add(new EachItem(itemName, itemQuantity));
     }
-    public void setQuantity(int setQuantity) {
-        quantity = setQuantity;
+    //returns array of names
+    public static String[] getItemNames() {
+        String[] toReturn = new String[listOfItems.size()];
+        for(int i = 0; i < listOfItems.size(); i++) {
+            toReturn[i] = listOfItems.get(i).itemName;
+        }
+        return toReturn;
     }
-    public void changeQuantityBy (int change) {
-        quantity = quantity + change;
+    //returns array of integers
+    public static int[] getItemQuantities() {
+        int[] toReturn = new int[listOfItems.size()];
+        for(int i = 0; i < listOfItems.size(); i++) {
+            toReturn[i] = listOfItems.get(i).itemQuantity;
+        }
+        return toReturn;
     }
 }
