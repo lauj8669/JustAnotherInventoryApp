@@ -16,6 +16,7 @@ public class addNewItem extends AppCompatActivity {
     private EditText nameInput;
     private EditText quantityInput;
     private TextView errorMsg;
+    private TextView errorMsg2;
     private Button submitButton;
     private Button cancelButton;
 
@@ -28,6 +29,8 @@ public class addNewItem extends AppCompatActivity {
         quantityInput = findViewById(R.id.itemQuantity);
         errorMsg = findViewById(R.id.quantError);
         errorMsg.setVisibility(View.INVISIBLE);
+        errorMsg2 = findViewById(R.id.duplicateItemError);
+        errorMsg2.setVisibility(View.INVISIBLE);
 
         submitButton = findViewById(R.id.createButton);
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -47,9 +50,14 @@ public class addNewItem extends AppCompatActivity {
                 } else {
                     // if not, send the information to Item.class and exit
                     quantity = Integer.parseInt(quantityInput.getText().toString());
-                    Item.addNewItem(name, quantity);
-                    startActivity(new Intent(v.getContext(), MainActivity.class));
-                    finish();
+                    //Add the item to the private list.
+                    if (!(Item.addNewItem(name, quantity))) {
+                        //Alert the user that the item they added is already in inventory and thus not added.
+                        errorMsg2.setVisibility(View.VISIBLE);
+                    } else {
+                        startActivity(new Intent(v.getContext(), MainActivity.class));
+                        finish();
+                    }
                 }
             }
         });

@@ -75,4 +75,20 @@
         android:text="Cancel"
         app:layout_constraintStart_toEndOf="@+id/createButton"
         app:layout_constraintTop_toTopOf="@+id/createButton" />
+
+    <TextView
+        android:id="@+id/duplicateItemError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="29dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginRight="29dp"
+        android:layout_marginBottom="41dp"
+        android:text="The item you tried to add already exists in the inventory."
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quantError" />
 </androidx.constraintlayout.widget.ConstraintLayout>
