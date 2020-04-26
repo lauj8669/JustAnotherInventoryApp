@@ -34,7 +34,7 @@ public class myAdaptor extends RecyclerView.Adapter<myAdaptor.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         holder.myText1.setText(data1[position]);
-        holder.myText2.setText(data2[position]);
+        holder.myText2.setText(data2[position] + "");
     }
 
     @Override
