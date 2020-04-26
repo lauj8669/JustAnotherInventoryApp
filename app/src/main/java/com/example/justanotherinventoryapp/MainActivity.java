@@ -9,6 +9,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
@@ -40,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         recyclerView = findViewById(R.id.recyclerView);
-        /*
-        s1 = Item.getNames();
-        s2 = Item.getQuantities();
-         */
+        s1 = Item.getItemNames();
+        s2 = Item.getItemQuantities();
         myAdaptor adaptor = new myAdaptor(this, s1, s2);
+        recyclerView.setAdapter(adaptor);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
