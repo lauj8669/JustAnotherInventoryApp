@@ -17,8 +17,14 @@ public class Item {
     }
     private static List<EachItem> listOfItems = new ArrayList<>();
 
-    public static void addNewItem(String itemName, int itemQuantity) {
+    public static boolean addNewItem(String itemName, int itemQuantity) {
+        for (int i = 0; i < listOfItems.size(); i++) {
+            if (itemName.equals(listOfItems.get(i).itemName)) {
+                return false; //The item is already inside the list
+            }
+        }
         listOfItems.add(new EachItem(itemName, itemQuantity));
+        return true;
     }
     //returns array of names
     public static String[] getItemNames() {
