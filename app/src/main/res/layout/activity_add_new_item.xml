@@ -26,8 +26,8 @@
         android:layout_marginLeft="99dp"
         android:layout_marginTop="212dp"
         android:ems="10"
+        android:hint="Name"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,8 +39,8 @@
         android:layout_marginLeft="99dp"
         android:layout_marginTop="266dp"
         android:ems="10"
+        android:hint="Quantity"
         android:inputType="textPersonName"
-        android:text="Quantity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
