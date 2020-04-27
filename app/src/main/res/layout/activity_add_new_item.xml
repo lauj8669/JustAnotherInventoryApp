@@ -62,7 +62,7 @@
         android:layout_marginStart="66dp"
         android:layout_marginLeft="66dp"
         android:layout_marginTop="84dp"
-        android:text="Please enter a valid number for the quantity!"
+        android:text="Please enter a positive integer for the quantity!"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -45,7 +45,7 @@ public class addNewItem extends AppCompatActivity {
                     isItInt = false;
                 }
                 // if yes, display the error message
-                if (!(isItInt)) {
+                if (!(isItInt) || quantity <= 0) {
                     errorMsg.setVisibility(View.VISIBLE);
                 } else {
                     // if not, send the information to Item.class and exit
