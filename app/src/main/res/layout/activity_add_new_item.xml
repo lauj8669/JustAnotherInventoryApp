@@ -7,6 +7,19 @@
     android:layout_height="match_parent"
     tools:context=".addNewItem">
 
+    <EditText
+        android:id="@+id/itemQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginTop="266dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Quantity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -28,19 +41,6 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/itemQuantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="99dp"
-        android:layout_marginLeft="99dp"
-        android:layout_marginTop="266dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Quantity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,4 +75,5 @@
         android:text="Cancel"
         app:layout_constraintStart_toEndOf="@+id/createButton"
         app:layout_constraintTop_toTopOf="@+id/createButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

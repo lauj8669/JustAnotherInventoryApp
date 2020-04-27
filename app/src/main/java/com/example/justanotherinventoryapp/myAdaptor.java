@@ -35,6 +35,16 @@ public class myAdaptor extends RecyclerView.Adapter<myAdaptor.MyViewHolder> {
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         holder.myText1.setText(data1[position]);
         holder.myText2.setText(data2[position] + "");
+
+        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ModifyItem.class);
+                intent.putExtra("data1", data1[position]);
+                intent.putExtra("data2", data2[position] + "");
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
