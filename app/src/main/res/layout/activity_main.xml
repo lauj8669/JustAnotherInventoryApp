@@ -29,8 +29,18 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:reverseLayout="false" />
+            android:layout_height="615dp"
+            app:reverseLayout="false">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/welcomeMessage"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="  Add items with this button ->"
+            android:textSize="24sp"
+            android:textStyle="italic" />
 
     </LinearLayout>
 
