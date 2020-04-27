@@ -42,4 +42,12 @@ public class Item {
         }
         return toReturn;
     }
+    public static void modifyItemQuantity(String itemName, int newQuantity) {
+        for(int i = 0; i < listOfItems.size(); i++) {
+            if (itemName.equals(listOfItems.get(i).itemName)) {
+                listOfItems.get(i).itemQuantity = newQuantity;
+            }
+        }
+    }
+
 }

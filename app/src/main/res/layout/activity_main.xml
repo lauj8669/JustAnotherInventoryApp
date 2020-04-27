@@ -35,7 +35,7 @@
         </androidx.recyclerview.widget.RecyclerView>
 
         <TextView
-            android:id="@+id/welcomeMessage"
+            android:id="@+id/userInstruction"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="  Add items with this button ->"

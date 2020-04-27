@@ -52,7 +52,7 @@ public class ModifyItem extends AppCompatActivity {
                 } else {
                     // if not, send the information to Item.class and exit
                     quantity = Integer.parseInt(quantityInput.getText().toString());
-                    // Item.modifyItemQuantity(name, quantity);
+                    Item.modifyItemQuantity(name, quantity);
                     startActivity(new Intent(v.getContext(), MainActivity.class));
                     finish();
                 }
