@@ -1,9 +1,12 @@
 package com.example.justanotherinventoryapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -15,13 +18,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import java.lang.reflect.Type;
+import java.util.List;
 
+public class MainActivity extends AppCompatActivity {
+    // _____________________________________instance  variables_____________________________________
+    // general
     private FloatingActionButton add;
+    private FloatingActionButton save;
     private RecyclerView recyclerView;
-    private TextView welcomeMessage;
     String[] s1;
     int[] s2;
+    static boolean firstTime = true;
+
+    // for storing data
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String NAME = "name";
+    public static final String QUANT = "quantity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        welcomeMessage = findViewById(R.id.userInstruction);
-        welcomeMessage.setVisibility(View.VISIBLE);
         add = findViewById(R.id.fab);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +50,18 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+        save = findViewById(R.id.saveButton);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveData();
+            }
+        });
+
+        if (firstTime) {
+            loadData();
+            firstTime = false;
+        }
 
         recyclerView = findViewById(R.id.recyclerView);
         s1 = Item.getItemNames();
@@ -48,6 +71,31 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    // ________________________________methods regarding saving data________________________________
+    public void saveData() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        Gson gson = new Gson();
+        String json  = gson.toJson(Item.listOfItems);
+        editor.putString("Item List", json);
+        editor.commit();
+    }
+
+    public void loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("Item List", null);
+        Type type = new TypeToken<List<Item.EachItem>>() {}.getType();
+        List<Item.EachItem> filler = gson.fromJson(json, type);
+        if (gson.fromJson(json, type) == null) {
+            return;
+        } else {
+            Item.listOfItems = gson.fromJson(json, type);
+        }
+    }
+
+    // _______________________________________unused  methods_______________________________________
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
