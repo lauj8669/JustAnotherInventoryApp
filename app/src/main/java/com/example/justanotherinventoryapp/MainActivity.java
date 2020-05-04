@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     // _____________________________________instance  variables_____________________________________
     // general
     private FloatingActionButton add;
-    private FloatingActionButton save;
+    private FloatingActionButton delete;
     private RecyclerView recyclerView;
     String[] s1;
     int[] s2;
@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
     // for storing data
     public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String NAME = "name";
-    public static final String QUANT = "quantity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-        save = findViewById(R.id.saveButton);
-        save.setOnClickListener(new View.OnClickListener() {
+        delete = findViewById(R.id.deleteButton);
+        delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveData();
+                Item.listOfItems.clear();
             }
         });
 
@@ -69,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         myAdaptor adaptor = new myAdaptor(this, s1, s2);
         recyclerView.setAdapter(adaptor);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        saveData();
     }
 
     // ________________________________methods regarding saving data________________________________
