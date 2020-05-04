@@ -67,13 +67,22 @@
 
         <Button
             android:id="@+id/sortAlphabet"
-            android:layout_width="0dp"
+            android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="125dp"
             android:layout_marginRight="125dp"
+            android:layout_marginBottom="50dp"
             android:text="Sort by Name"
-            app:layout_constraintEnd_toStartOf="@+id/deleteButton"
-            app:layout_constraintTop_toTopOf="@+id/deleteButton" />
+            app:layout_constraintBottom_toBottomOf="@+id/deleteButton"
+            app:layout_constraintEnd_toStartOf="@+id/deleteButton" />
+
+        <Button
+            android:id="@+id/sortType"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:text="Sort by Type"
+            app:layout_constraintStart_toStartOf="@+id/sortAlphabet"
+            app:layout_constraintTop_toBottomOf="@+id/sortAlphabet" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

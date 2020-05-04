@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton add;
     private FloatingActionButton delete;
     private Button sortAlphabet;
+    private Button sortType;
     private RecyclerView recyclerView;
     String[] names;
     String[] types;
@@ -64,6 +65,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Item.sortAlphabet();
+                finish();
+                startActivity(getIntent());
+            }
+        });
+        sortType = findViewById(R.id.sortType);
+        sortType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Item.sortType();
                 finish();
                 startActivity(getIntent());
             }

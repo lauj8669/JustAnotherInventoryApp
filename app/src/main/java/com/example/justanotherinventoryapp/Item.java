@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -80,21 +81,32 @@ public class Item {
         }
     }
 
-    // sorts the list of Item alphabetically by name
+    // sorts the list of Items alphabetically by name
     public static void sortAlphabet() {
         List<EachItem> newList = new ArrayList<>();
         String[] names = getItemNames();
-        for (int i = 0; i < names.length - 1; i++) {
-            if (names[i].compareTo(names[i + 1]) > 0) {
-                String temp = names[i];
-                names[i] = names[i + 1];
-                names[i + 1] = temp;
-            }
-        }
+        Arrays.sort(names);
         for (int i = 0; i < listOfItems.size(); i++) {
             for (int j = 0; j < listOfItems.size(); j++) {
-                if (listOfItems.get(i).itemName.equals(names[j])) {
-                    newList.add(listOfItems.get(i));
+                if (names[i].equals(listOfItems.get(j).itemName)) {
+                    newList.add(listOfItems.get(j));
+                    break;
+                }
+            }
+
+        }
+        listOfItems = newList;
+    }
+
+    // sorts the list of Items alphabetically by type
+    public static void sortType() {
+        List<EachItem> newList = new ArrayList<>();
+        String[] types = getItemTypes();
+        Arrays.sort(types);
+        for (int i = 0; i < listOfItems.size(); i++) {
+            for (int j = 0; j < listOfItems.size(); j++) {
+                if (types[i].equals(listOfItems.get(j).itemType)) {
+                    newList.add(listOfItems.get(j));
                     break;
                 }
             }
