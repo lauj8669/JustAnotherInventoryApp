@@ -1,8 +1,11 @@
 package com.example.justanotherinventoryapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -38,7 +41,7 @@ public class addNewItem extends AppCompatActivity {
             public void onClick(View v) {
                 name = nameInput.getText().toString();
                 Boolean isItInt = true;
-                // checking if the user inputted a number for the quantity
+                // check if the user inputted a number for the quantity
                 try {
                     quantity = Integer.parseInt(quantityInput.getText().toString());
                 } catch(Exception e) {
@@ -48,11 +51,13 @@ public class addNewItem extends AppCompatActivity {
                 if (!(isItInt) || quantity < 0) {
                     errorMsg.setVisibility(View.VISIBLE);
                 } else {
-                    // if not, send the information to Item.class and exit
+                    // if not, check for duplication error
                     quantity = Integer.parseInt(quantityInput.getText().toString());
                     if (!(Item.addNewItem(name, quantity))) {
+                        // if yes, display the error message
                         errorMsg2.setVisibility(View.VISIBLE);
                     } else {
+                        // if no, save the data in Item.class and exit
                         startActivity(new Intent(v.getContext(), MainActivity.class));
                         finish();
                     }
