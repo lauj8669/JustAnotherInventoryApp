@@ -1,11 +1,8 @@
 package com.example.justanotherinventoryapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,8 +12,10 @@ import android.widget.TextView;
 public class addNewItem extends AppCompatActivity {
     // instance variables
     private String name;
+    private String type;
     private int quantity;
     private EditText nameInput;
+    private EditText typeInput;
     private EditText quantityInput;
     private TextView errorMsg;
     private TextView errorMsg2;
@@ -29,7 +28,9 @@ public class addNewItem extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_item);
         nameInput = findViewById(R.id.itemName);
+        typeInput = findViewById(R.id.itemType);
         quantityInput = findViewById(R.id.itemQuantity);
+
         errorMsg = findViewById(R.id.quantError);
         errorMsg.setVisibility(View.INVISIBLE);
         errorMsg2 = findViewById(R.id.duplicateItemError);
@@ -40,6 +41,7 @@ public class addNewItem extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 name = nameInput.getText().toString();
+                type = typeInput.getText().toString();
                 Boolean isItInt = true;
                 // check if the user inputted a number for the quantity
                 try {
@@ -53,11 +55,12 @@ public class addNewItem extends AppCompatActivity {
                 } else {
                     // if not, check for duplication error
                     quantity = Integer.parseInt(quantityInput.getText().toString());
-                    if (!(Item.addNewItem(name, quantity))) {
+                    if (!(Item.addNewItem(name, type, quantity))) {
                         // if yes, display the error message
                         errorMsg2.setVisibility(View.VISIBLE);
                     } else {
                         // if no, save the data in Item.class and exit
+                        Item.addNewItem(name, type, quantity);
                         startActivity(new Intent(v.getContext(), MainActivity.class));
                         finish();
                     }

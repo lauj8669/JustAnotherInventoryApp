@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp"
         android:layout_marginLeft="99dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="99dp"
         android:layout_marginRight="99dp"
         android:ems="10"
@@ -53,7 +53,7 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemName" />
+        app:layout_constraintTop_toBottomOf="@+id/itemType" />
 
     <Button
         android:id="@+id/createButton"
@@ -70,13 +70,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="58dp"
         android:layout_marginLeft="58dp"
-        android:layout_marginTop="84dp"
         android:layout_marginEnd="58dp"
         android:layout_marginRight="58dp"
+        android:layout_marginBottom="10dp"
         android:text="Please enter a positive integer for the quantity!"
+        app:layout_constraintBottom_toTopOf="@+id/duplicateItemError"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/cancel"
@@ -93,13 +93,27 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="29dp"
         android:layout_marginLeft="29dp"
-        android:layout_marginTop="21dp"
         android:layout_marginEnd="29dp"
         android:layout_marginRight="29dp"
-        android:layout_marginBottom="41dp"
+        android:layout_marginBottom="40dp"
         android:text="The item you tried to add already exists in the inventory."
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/itemType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginRight="99dp"
+        android:ems="10"
+        android:hint="Type (eg: electronics)"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quantError" />
+        app:layout_constraintTop_toBottomOf="@+id/itemName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,10 +14,13 @@ public class ModifyItem extends AppCompatActivity {
 
     // instance variables
     private String name;
+    private String type;
     private int quantity;
     private EditText nameInput;
+    private EditText typeInput;
     private EditText quantityInput;
     private TextView editError;
+    private TextView editError2;
     private Button submitButton2;
     private Button cancelButton;
 
@@ -27,9 +30,12 @@ public class ModifyItem extends AppCompatActivity {
         setContentView(R.layout.activity_modify_item);
 
         nameInput = findViewById(R.id.editName);
+        typeInput = findViewById(R.id.editType);
         quantityInput = findViewById(R.id.editQuantity);
         editError = findViewById(R.id.editError);
         editError.setVisibility(View.INVISIBLE);
+        editError2 = findViewById((R.id.editError2));
+        editError2.setVisibility(View.VISIBLE);
 
         getData();
         setData();
@@ -39,6 +45,7 @@ public class ModifyItem extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 name = nameInput.getText().toString();
+                type = typeInput.getText().toString();
                 Boolean isItInt = true;
                 // checking if the user inputted a number for the quantity
                 try {
@@ -52,7 +59,7 @@ public class ModifyItem extends AppCompatActivity {
                 } else {
                     // if not, send the information to Item.class and exit
                     quantity = Integer.parseInt(quantityInput.getText().toString());
-                    Item.modifyItemQuantity(name, quantity);
+                    Item.modifyItemQuantity(name, type, quantity);
                     startActivity(new Intent(v.getContext(), MainActivity.class));
                     finish();
                 }
@@ -70,11 +77,12 @@ public class ModifyItem extends AppCompatActivity {
 
     }
 
-    private String data1, data2;
+    private String data1, data3, data2;
 
     private void getData() {
-        if(getIntent().hasExtra("data1") && getIntent().hasExtra("data2")) {
+        if(getIntent().hasExtra("data1") && getIntent().hasExtra("data3") && getIntent().hasExtra("data2")) {
             data1 = getIntent().getStringExtra("data1");
+            data3 = getIntent().getStringExtra("data3");
             data2 = getIntent().getStringExtra("data2");
         } else {
             Toast.makeText(this, "No data available", Toast.LENGTH_SHORT).show();
@@ -83,6 +91,7 @@ public class ModifyItem extends AppCompatActivity {
 
     private void setData() {
         nameInput.setText(data1);
+        typeInput.setText(data3);
         quantityInput.setText(data2);
     }
 }

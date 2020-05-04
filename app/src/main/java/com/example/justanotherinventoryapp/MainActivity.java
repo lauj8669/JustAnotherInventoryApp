@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.widget.Button;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -26,9 +26,11 @@ public class MainActivity extends AppCompatActivity {
     // general
     private FloatingActionButton add;
     private FloatingActionButton delete;
+    private Button sortAlphabet;
     private RecyclerView recyclerView;
-    String[] s1;
-    int[] s2;
+    String[] names;
+    String[] types;
+    int[] quants;
     static boolean firstTime = true;
 
     // for storing data
@@ -53,6 +55,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Item.listOfItems.clear();
+                finish();
+                startActivity(getIntent());
+            }
+        });
+        sortAlphabet = findViewById(R.id.sortAlphabet);
+        sortAlphabet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Item.sortAlphabet();
+                finish();
+                startActivity(getIntent());
             }
         });
 
@@ -62,9 +75,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         recyclerView = findViewById(R.id.recyclerView);
-        s1 = Item.getItemNames();
-        s2 = Item.getItemQuantities();
-        myAdaptor adaptor = new myAdaptor(this, s1, s2);
+        names = Item.getItemNames();
+        types = Item.getItemTypes();
+        quants = Item.getItemQuantities();
+        myAdaptor adaptor = new myAdaptor(this, names, types, quants);
         recyclerView.setAdapter(adaptor);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         saveData();
@@ -86,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
         Gson gson = new Gson();
         String json = sharedPreferences.getString("Item List", null);
         Type type = new TypeToken<List<Item.EachItem>>() {}.getType();
-        List<Item.EachItem> filler = gson.fromJson(json, type);
         if (gson.fromJson(json, type) == null) {
             return;
         } else {
