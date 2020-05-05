@@ -21,7 +21,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
+                android:background="#13294B"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -46,7 +46,7 @@
             android:layout_marginRight="20dp"
             android:clickable="true"
             android:focusable="true"
-            app:backgroundTint="#616161"
+            app:backgroundTint="#E84A27"
             app:layout_constraintBottom_toBottomOf="@+id/fab"
             app:layout_constraintEnd_toStartOf="@+id/fab"
             app:srcCompat="@android:drawable/ic_menu_delete" />
@@ -60,7 +60,7 @@
             android:layout_marginEnd="25dp"
             android:layout_marginRight="25dp"
             android:layout_marginBottom="25dp"
-            app:backgroundTint="#616161"
+            app:backgroundTint="#E84A27"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@android:drawable/ic_input_add" />

@@ -1,5 +1,7 @@
 package com.example.justanotherinventoryapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -43,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // adding an Item
         add = findViewById(R.id.fab);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,15 +55,28 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        // deleting all the Items
         delete = findViewById(R.id.deleteButton);
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        final AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+        dlgAlert.setMessage("Are you sure you want to delete all items?");
+        dlgAlert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
                 Item.listOfItems.clear();
                 finish();
                 startActivity(getIntent());
             }
         });
+        dlgAlert.setCancelable(true);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dlgAlert.create().show();
+            }
+        });
+
+
+        // sorting by alphabet
         sortAlphabet = findViewById(R.id.sortAlphabet);
         sortAlphabet.setOnClickListener(new View.OnClickListener() {
             @Override

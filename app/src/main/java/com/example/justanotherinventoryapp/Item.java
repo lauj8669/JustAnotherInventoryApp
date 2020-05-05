@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -85,7 +86,7 @@ public class Item {
     public static void sortAlphabet() {
         List<EachItem> newList = new ArrayList<>();
         String[] names = getItemNames();
-        Arrays.sort(names);
+        Arrays.sort(names, Collator.getInstance());
         for (int i = 0; i < listOfItems.size(); i++) {
             for (int j = 0; j < listOfItems.size(); j++) {
                 if (names[i].equals(listOfItems.get(j).itemName)) {
@@ -102,7 +103,7 @@ public class Item {
     public static void sortType() {
         List<EachItem> newList = new ArrayList<>();
         String[] types = getItemTypes();
-        Arrays.sort(types);
+        Arrays.sort(types, Collator.getInstance());
         for (int i = 0; i < listOfItems.size(); i++) {
             for (int j = 0; j < listOfItems.size(); j++) {
                 if (types[i].equals(listOfItems.get(j).itemType)) {
